@@ -1,0 +1,19 @@
+# Ignorar la carpeta node_modules
+node_modules
+
+# Ignorar archivos de entorno
+.env
+
+# Ignorar archivos de log
+logs
+*.log
+npm-debug.log*
+
+# Ignorar el directorio de cobertura de pruebas
+coverage
+
+# Ignorar archivos de construcción
+dist
+
+# Ignorar directorios de sistemas de construcción
+.DS_Store
