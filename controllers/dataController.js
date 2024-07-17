@@ -1,6 +1,7 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 const xlsx = require('xlsx');
+const path = require('path');
 
 // Variables para almacenar los datos
 let grupoInfo = {};
@@ -34,19 +35,19 @@ const leerXLSX = (ruta, callback) => {
 };
 
 // Cargar datos al iniciar
-leerCSV('./grupo.csv', ';', (datos) => {
+leerCSV(path.join(__dirname, '../grupo.csv'), ';', (datos) => {
   grupoInfo = datos[0];
 });
 
-leerCSV('./Proyectos.csv', ';', (datos) => {
+leerCSV(path.join(__dirname, '../Proyectos.csv'), ';', (datos) => {
   proyectosInfo = datos;
 });
 
-leerCSV('./Semilleros.csv', ';', (datos) => {
+leerCSV(path.join(__dirname, '../Semilleros.csv'), ';', (datos) => {
   semillerosInfo = datos;
 });
 
-leerCSV('./datos_facebook.csv', ',', (datos) => {
+leerCSV(path.join(__dirname, '../datos_facebook.csv'), ',', (datos) => {
   datosFacebook = datos;
   datosFacebookSimplificados = datos.map(item => ({
     Titulo: item['Título'],
@@ -59,7 +60,7 @@ leerCSV('./datos_facebook.csv', ',', (datos) => {
   curiosidadesSabias = datos.filter(item => item['Descripción'] && item['Descripción'].includes('¿Sabías qué?'));
 });
 
-leerXLSX('./datos_instagram.xlsx', (datos) => {
+leerXLSX(path.join(__dirname, '../datos_instagram.xlsx'), (datos) => {
   datosInstagram = datos;
 });
 
