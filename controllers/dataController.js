@@ -76,7 +76,7 @@ const obtenerElementoAleatorio = (array) => {
   return array[Math.floor(Math.random() * array.length)];
 };
 
-// Función para formatear los datos de manera más legible
+// Funciones para formatear los datos de manera más legible
 const formatearDatos = (datos) => {
   if (Array.isArray(datos)) {
     return datos.join('\n');
@@ -87,25 +87,61 @@ const formatearDatos = (datos) => {
   return datos;
 };
 
+const formatearProyecto = (proyecto) => {
+  return `
+Nombre del Proyecto: ${proyecto['nombre_proyecto']}
+Descripción: ${proyecto['descripcion_proyecto']}
+Semillero: ${proyecto['semillero']}
+Integrantes: ${proyecto['integrantes']}
+Director del Proyecto: ${proyecto['director_proyecto']}
+Co-Director: ${proyecto['co_director']}
+Estado: ${proyecto['estado']}
+  `;
+};
+
+const formatearSemillero = (semillero) => {
+  return `
+Nombre del Semillero: ${semillero['nombre_semillero']}
+Docente Encargado: ${semillero['docente_encargado']}
+Objetivo del Semillero: ${semillero['objetivo_semillero']}
+Línea de Investigación: ${semillero['linea_investigacion']}
+  `;
+};
+
+const formatearArticulo = (articulo) => {
+  return `
+Título: ${articulo['Título']}
+País: ${articulo['País']}
+Revista: ${articulo['Revista']}
+ISSN: ${articulo['ISSN']}
+Año: ${articulo['Año']}
+Volumen: ${articulo['Volumen']}
+Fascículo: ${articulo['Fascículo']}
+Páginas: ${articulo['Páginas']}
+DOI: ${articulo['DOI']}
+Autores: ${articulo['Autores']}
+  `;
+};
+
 // Controladores
 const getGrupo = (req, res) => {
   res.json({
     message: `Aquí tienes información sobre el grupo de investigación:\n\n${formatearDatos(grupoInfo)}`,
-    suggested_replies: ["Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getProyectos = (req, res) => {
   res.json({
-    message: `Aquí tienes información sobre los proyectos:\n\n${proyectosInfo.map(proyecto => formatearDatos(proyecto)).join('\n\n')}`,
-    suggested_replies: ["Ver grupo", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    message: `Aquí tienes información sobre los proyectos:\n\n${proyectosInfo.map(proyecto => formatearProyecto(proyecto)).join('\n\n')}`,
+    suggested_replies: ["Ver grupo", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getSemilleros = (req, res) => {
   res.json({
-    message: `Aquí tienes información sobre los semilleros:\n\n${semillerosInfo.map(semillero => formatearDatos(semillero)).join('\n\n')}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    message: `Aquí tienes información sobre los semilleros:\n\n${semillerosInfo.map(semillero => formatearSemillero(semillero)).join('\n\n')}`,
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
@@ -116,9 +152,14 @@ const getFacebookData = (req, res) => {
 };
 
 const getNoticiasFacebook = (req, res) => {
+  const noticiasSimplificadas = noticiasFacebook.map(noticia => ({
+    Descripcion: noticia['Descripción'],
+    EnlacePermanente: noticia['Enlace permanente']
+  }));
+
   res.json({
-    message: `Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles:\n\n${noticiasFacebook.map(noticia => formatearDatos(noticia)).join('\n\n')}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    message: `Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles:\n\n${noticiasSimplificadas.map(noticia => `Descripción: ${noticia.Descripcion}\nEnlace permanente: ${noticia.EnlacePermanente}`).join('\n\n')}`,
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver datos curiosos"]
   });
 };
 
@@ -126,7 +167,7 @@ const getCuriosidadAleatoria = (req, res) => {
   const curiosidadAleatoria = obtenerElementoAleatorio(curiosidades);
   res.json({
     message: `Aquí tienes un dato curioso:\n\n${formatearDatos(curiosidadAleatoria)}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias"]
   });
 };
 
@@ -137,7 +178,7 @@ const getRedesSociales = (req, res) => {
       instagram: "https://www.instagram.com/grupogalash/",
       linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
     })}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
@@ -150,42 +191,42 @@ const getInstagramData = (req, res) => {
 const getLineasInvestigacion = (req, res) => {
   res.json({
     message: `Aquí tienes las líneas de investigación:\n\n${formatearDatos(lineasInvestigacion)}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getPlanEstrategico = (req, res) => {
   res.json({
     message: `Aquí tienes el plan estratégico:\n\n${formatearDatos(planEstrategico)}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getObjetivos = (req, res) => {
   res.json({
     message: `Aquí tienes los objetivos:\n\n${formatearDatos(objetivos)}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver retos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getRetos = (req, res) => {
   res.json({
     message: `Aquí tienes los retos:\n\n${formatearDatos(retos)}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver visión", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver visión", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getVision = (req, res) => {
   res.json({
     message: `Aquí tienes la visión:\n\n${formatearDatos(vision)}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver artículos publicados"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver artículos publicados", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
 const getArticulosPublicados = (req, res) => {
   res.json({
-    message: `Aquí tienes la información de los artículos publicados:\n\n${articulosPublicados.map(articulo => formatearDatos(articulo)).join('\n\n')}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión"]
+    message: `Aquí tienes la información de los artículos publicados:\n\n${articulosPublicados.map(articulo => formatearArticulo(articulo)).join('\n\n')}`,
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver noticias", "Ver datos curiosos"]
   });
 };
 
