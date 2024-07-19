@@ -72,45 +72,40 @@ const obtenerElementoAleatorio = (array) => {
 // Controladores
 const getGrupo = (req, res) => {
   res.json({
-    message: "Aquí tienes información sobre el grupo de investigación:",
-    data: grupoInfo,
+    message: `Aquí tienes información sobre el grupo de investigación:\n${JSON.stringify(grupoInfo, null, 2)}`,
     suggested_replies: ["Más información", "Ver proyectos"]
   });
 };
 
 const getProyectos = (req, res) => {
   res.json({
-    message: "Aquí tienes información sobre los proyectos:",
-    data: proyectosInfo,
+    message: `Aquí tienes información sobre los proyectos:\n${JSON.stringify(proyectosInfo, null, 2)}`,
     suggested_replies: ["Más información", "Ver semilleros"]
   });
 };
 
 const getSemilleros = (req, res) => {
   res.json({
-    message: "Aquí tienes información sobre los semilleros:",
-    data: semillerosInfo,
+    message: `Aquí tienes información sobre los semilleros:\n${JSON.stringify(semillerosInfo, null, 2)}`,
     suggested_replies: ["Más información", "Ver datos de Facebook"]
   });
 };
 
 const getFacebookData = (req, res) => {
   res.json({
-    message: "Aquí tienes los datos de Facebook:",
-    data: datosFacebookSimplificados,
+    message: `Aquí tienes los datos de Facebook:\n${JSON.stringify(datosFacebookSimplificados, null, 2)}`,
     suggested_replies: ["Más información", "Ver noticias de Facebook"]
   });
 };
 
 const getNoticiasFacebook = (req, res) => {
   res.json({
-    message: "Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles",
-    data: noticiasFacebook.map(item => ({
+    message: `Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles:\n${JSON.stringify(noticiasFacebook.map(item => ({
       Titulo: item['Título'],
       Descripcion: item['Descripción'],
       Fecha: item['Fecha'],
       EnlacePermanente: item['Enlace permanente']
-    })),
+    })), null, 2)}`,
     suggested_replies: ["Más noticias", "Ver curiosidades"]
   });
 };
@@ -118,14 +113,13 @@ const getNoticiasFacebook = (req, res) => {
 const getCuriosidadesFacebook = (req, res) => {
   const curiosidadAleatoria = obtenerElementoAleatorio(curiosidadesFacebook);
   res.json({
-    message: "Aquí tienes una curiosidad interesante:",
-    data: {
+    message: `Aquí tienes una curiosidad interesante:\n${JSON.stringify({
       Titulo: curiosidadAleatoria['Título'],
       Descripcion: curiosidadAleatoria['Descripción'],
       Fecha: curiosidadAleatoria['Fecha'],
       EnlacePermanente: curiosidadAleatoria['Enlace permanente'],
       Imagen: curiosidadAleatoria['Imagen'] || curiosidadAleatoria['Enlace permanente']
-    },
+    }, null, 2)}`,
     suggested_replies: ["Otra curiosidad", "Ver curiosidades sabias"]
   });
 };
@@ -133,34 +127,31 @@ const getCuriosidadesFacebook = (req, res) => {
 const getCuriosidadesSabias = (req, res) => {
   const curiosidadSabiaAleatoria = obtenerElementoAleatorio(curiosidadesSabias);
   res.json({
-    message: "Aquí tienes un dato curioso, ¿Sabías qué?",
-    data: {
+    message: `Aquí tienes un dato curioso, ¿Sabías qué?\n${JSON.stringify({
       Titulo: curiosidadSabiaAleatoria['Título'],
       Descripcion: curiosidadSabiaAleatoria['Descripción'],
       Fecha: curiosidadSabiaAleatoria['Fecha'],
       EnlacePermanente: curiosidadSabiaAleatoria['Enlace permanente'],
       Imagen: curiosidadSabiaAleatoria['Imagen'] || curiosidadSabiaAleatoria['Enlace permanente']
-    },
+    }, null, 2)}`,
     suggested_replies: ["Otra curiosidad sabia", "Ver redes sociales"]
   });
 };
 
 const getRedesSociales = (req, res) => {
   res.json({
-    message: "Aquí tienes nuestros enlaces en redes sociales:",
-    data: {
+    message: `Aquí tienes nuestros enlaces en redes sociales:\n${JSON.stringify({
       facebook: "https://www.facebook.com/GrupoGALASH",
       instagram: "https://www.instagram.com/grupogalash/",
       linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
-    },
+    }, null, 2)}`,
     suggested_replies: ["Ver datos de Instagram", "Ver proyectos"]
   });
 };
 
 const getInstagramData = (req, res) => {
   res.json({
-    message: "Aquí tienes los datos de Instagram:",
-    data: datosInstagram,
+    message: `Aquí tienes los datos de Instagram:\n${JSON.stringify(datosInstagram, null, 2)}`,
     suggested_replies: ["Más información", "Ver grupo"]
   });
 };
