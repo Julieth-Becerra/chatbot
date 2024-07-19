@@ -81,6 +81,9 @@ const formatearDatos = (datos) => {
   if (Array.isArray(datos)) {
     return datos.join('\n');
   }
+  if (typeof datos === 'object' && datos !== null) {
+    return Object.entries(datos).map(([key, value]) => `${key}: ${value}`).join('\n');
+  }
   return datos;
 };
 
