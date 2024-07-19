@@ -72,136 +72,96 @@ const obtenerElementoAleatorio = (array) => {
 // Controladores
 const getGrupo = (req, res) => {
   res.json({
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes información sobre el grupo de investigación:",
-        data: grupoInfo
-      }
-    ]
+    message: "Aquí tienes información sobre el grupo de investigación:",
+    data: grupoInfo,
+    suggested_replies: ["Más información", "Ver proyectos"]
   });
 };
 
 const getProyectos = (req, res) => {
   res.json({
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes información sobre los proyectos:",
-        data: proyectosInfo
-      }
-    ]
+    message: "Aquí tienes información sobre los proyectos:",
+    data: proyectosInfo,
+    suggested_replies: ["Más información", "Ver semilleros"]
   });
 };
 
 const getSemilleros = (req, res) => {
   res.json({
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes información sobre los semilleros:",
-        data: semillerosInfo
-      }
-    ]
+    message: "Aquí tienes información sobre los semilleros:",
+    data: semillerosInfo,
+    suggested_replies: ["Más información", "Ver datos de Facebook"]
   });
 };
 
 const getFacebookData = (req, res) => {
   res.json({
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes los datos de Facebook:",
-        data: datosFacebookSimplificados
-      }
-    ]
+    message: "Aquí tienes los datos de Facebook:",
+    data: datosFacebookSimplificados,
+    suggested_replies: ["Más información", "Ver noticias de Facebook"]
   });
 };
 
 const getNoticiasFacebook = (req, res) => {
-  const response = {
-    status: "success",
-    messages: [
-      {
-        text: "Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles",
-        data: noticiasFacebook.map(item => ({
-          Titulo: item['Título'],
-          Descripcion: item['Descripción'],
-          Fecha: item['Fecha'],
-          EnlacePermanente: item['Enlace permanente']
-        }))
-      }
-    ]
-  };
-  res.json(response);
+  res.json({
+    message: "Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles",
+    data: noticiasFacebook.map(item => ({
+      Titulo: item['Título'],
+      Descripcion: item['Descripción'],
+      Fecha: item['Fecha'],
+      EnlacePermanente: item['Enlace permanente']
+    })),
+    suggested_replies: ["Más noticias", "Ver curiosidades"]
+  });
 };
 
 const getCuriosidadesFacebook = (req, res) => {
   const curiosidadAleatoria = obtenerElementoAleatorio(curiosidadesFacebook);
-  const response = {
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes una curiosidad interesante:",
-        data: {
-          Titulo: curiosidadAleatoria['Título'],
-          Descripcion: curiosidadAleatoria['Descripción'],
-          Fecha: curiosidadAleatoria['Fecha'],
-          EnlacePermanente: curiosidadAleatoria['Enlace permanente'],
-          Imagen: curiosidadAleatoria['Imagen'] || curiosidadAleatoria['Enlace permanente'] // Usa el enlace permanente si no hay imagen
-        }
-      }
-    ]
-  };
-  res.json(response);
+  res.json({
+    message: "Aquí tienes una curiosidad interesante:",
+    data: {
+      Titulo: curiosidadAleatoria['Título'],
+      Descripcion: curiosidadAleatoria['Descripción'],
+      Fecha: curiosidadAleatoria['Fecha'],
+      EnlacePermanente: curiosidadAleatoria['Enlace permanente'],
+      Imagen: curiosidadAleatoria['Imagen'] || curiosidadAleatoria['Enlace permanente']
+    },
+    suggested_replies: ["Otra curiosidad", "Ver curiosidades sabias"]
+  });
 };
 
 const getCuriosidadesSabias = (req, res) => {
   const curiosidadSabiaAleatoria = obtenerElementoAleatorio(curiosidadesSabias);
-  const response = {
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes un dato curioso, ¿Sabías qué?",
-        data: {
-          Titulo: curiosidadSabiaAleatoria['Título'],
-          Descripcion: curiosidadSabiaAleatoria['Descripción'],
-          Fecha: curiosidadSabiaAleatoria['Fecha'],
-          EnlacePermanente: curiosidadSabiaAleatoria['Enlace permanente'],
-          Imagen: curiosidadSabiaAleatoria['Imagen'] || curiosidadSabiaAleatoria['Enlace permanente'] // Usa el enlace permanente si no hay imagen
-        }
-      }
-    ]
-  };
-  res.json(response);
+  res.json({
+    message: "Aquí tienes un dato curioso, ¿Sabías qué?",
+    data: {
+      Titulo: curiosidadSabiaAleatoria['Título'],
+      Descripcion: curiosidadSabiaAleatoria['Descripción'],
+      Fecha: curiosidadSabiaAleatoria['Fecha'],
+      EnlacePermanente: curiosidadSabiaAleatoria['Enlace permanente'],
+      Imagen: curiosidadSabiaAleatoria['Imagen'] || curiosidadSabiaAleatoria['Enlace permanente']
+    },
+    suggested_replies: ["Otra curiosidad sabia", "Ver redes sociales"]
+  });
 };
 
 const getRedesSociales = (req, res) => {
-  const redesSociales = {
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes nuestros enlaces en redes sociales:",
-        data: {
-          facebook: "https://www.facebook.com/GrupoGALASH",
-          instagram: "https://www.instagram.com/grupogalash/",
-          linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
-        }
-      }
-    ]
-  };
-  res.json(redesSociales);
+  res.json({
+    message: "Aquí tienes nuestros enlaces en redes sociales:",
+    data: {
+      facebook: "https://www.facebook.com/GrupoGALASH",
+      instagram: "https://www.instagram.com/grupogalash/",
+      linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
+    },
+    suggested_replies: ["Ver datos de Instagram", "Ver proyectos"]
+  });
 };
 
 const getInstagramData = (req, res) => {
   res.json({
-    status: "success",
-    messages: [
-      {
-        text: "Aquí tienes los datos de Instagram:",
-        data: datosInstagram
-      }
-    ]
+    message: "Aquí tienes los datos de Instagram:",
+    data: datosInstagram,
+    suggested_replies: ["Más información", "Ver grupo"]
   });
 };
 
