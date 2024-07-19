@@ -119,9 +119,6 @@ const getCuriosidadesFacebook = (req, res) => {
   res.json({
     messages: [
       {
-        text: `Aquí tienes una curiosidad interesante:\n\n${curiosidadAleatoria['Descripción']}`
-      },
-      {
         attachment: {
           type: "image",
           payload: {
@@ -130,7 +127,7 @@ const getCuriosidadesFacebook = (req, res) => {
         }
       },
       {
-        text: `Enlace: [Ver publicación](${curiosidadAleatoria['Enlace permanente']})`
+        text: `Aquí tienes una curiosidad interesante:\n\n${curiosidadAleatoria['Descripción']}\n\nEnlace: [Ver publicación](${curiosidadAleatoria['Enlace permanente']})`
       }
     ],
     suggested_replies: ["Otra curiosidad", "Ver curiosidades sabias"]
@@ -142,9 +139,6 @@ const getCuriosidadesSabias = (req, res) => {
   res.json({
     messages: [
       {
-        text: `Aquí tienes un dato curioso, ¿Sabías qué?\n\n${curiosidadSabiaAleatoria['Descripción']}`
-      },
-      {
         attachment: {
           type: "image",
           payload: {
@@ -153,7 +147,7 @@ const getCuriosidadesSabias = (req, res) => {
         }
       },
       {
-        text: `Enlace: [Ver publicación](${curiosidadSabiaAleatoria['Enlace permanente']})`
+        text: `Aquí tienes un dato curioso, ¿Sabías qué?\n\n${curiosidadSabiaAleatoria['Descripción']}\n\nEnlace: [Ver publicación](${curiosidadSabiaAleatoria['Enlace permanente']})`
       }
     ],
     suggested_replies: ["Otra curiosidad sabia", "Ver redes sociales"]
@@ -162,7 +156,7 @@ const getCuriosidadesSabias = (req, res) => {
 
 const getRedesSociales = (req, res) => {
   res.json({
-    message: `Aquí tienes nuestros enlaces en redes sociales:\n\n${formatearDatos({
+    message: `Para más información siguenos en nuestras redes sociales:\n\n${formatearDatos({
       facebook: "[Facebook](https://www.facebook.com/GrupoGALASH)",
       instagram: "[Instagram](https://www.instagram.com/grupogalash/)",
       linkedin: "[LinkedIn](https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/)"
