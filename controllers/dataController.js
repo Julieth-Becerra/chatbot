@@ -72,41 +72,66 @@ const obtenerElementoAleatorio = (array) => {
 // Controladores
 const getGrupo = (req, res) => {
   res.json({
-    mensaje: "Aquí tienes información sobre el grupo de investigación:",
-    grupo: grupoInfo
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes información sobre el grupo de investigación:",
+        data: grupoInfo
+      }
+    ]
   });
 };
 
 const getProyectos = (req, res) => {
   res.json({
-    mensaje: "Aquí tienes información sobre los proyectos:",
-    proyectos: proyectosInfo
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes información sobre los proyectos:",
+        data: proyectosInfo
+      }
+    ]
   });
 };
 
 const getSemilleros = (req, res) => {
   res.json({
-    mensaje: "Aquí tienes información sobre los semilleros:",
-    semilleros: semillerosInfo
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes información sobre los semilleros:",
+        data: semillerosInfo
+      }
+    ]
   });
 };
 
 const getFacebookData = (req, res) => {
   res.json({
-    mensaje: "Aquí tienes los datos de Facebook:",
-    datos_facebook: datosFacebookSimplificados
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes los datos de Facebook:",
+        data: datosFacebookSimplificados
+      }
+    ]
   });
 };
 
 const getNoticiasFacebook = (req, res) => {
   const response = {
-    mensaje: "Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles",
-    noticias: noticiasFacebook.map(item => ({
-      Titulo: item['Título'],
-      Descripcion: item['Descripción'],
-      Fecha: item['Fecha'],
-      EnlacePermanente: item['Enlace permanente']
-    }))
+    status: "success",
+    messages: [
+      {
+        text: "Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles",
+        data: noticiasFacebook.map(item => ({
+          Titulo: item['Título'],
+          Descripcion: item['Descripción'],
+          Fecha: item['Fecha'],
+          EnlacePermanente: item['Enlace permanente']
+        }))
+      }
+    ]
   };
   res.json(response);
 };
@@ -114,13 +139,19 @@ const getNoticiasFacebook = (req, res) => {
 const getCuriosidadesFacebook = (req, res) => {
   const curiosidadAleatoria = obtenerElementoAleatorio(curiosidadesFacebook);
   const response = {
-    mensaje: "Aquí tienes una curiosidad interesante:",
-    curiosidad: {
-      Titulo: curiosidadAleatoria['Título'],
-      Descripcion: curiosidadAleatoria['Descripción'],
-      Fecha: curiosidadAleatoria['Fecha'],
-      EnlacePermanente: curiosidadAleatoria['Enlace permanente']
-    }
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes una curiosidad interesante:",
+        data: {
+          Titulo: curiosidadAleatoria['Título'],
+          Descripcion: curiosidadAleatoria['Descripción'],
+          Fecha: curiosidadAleatoria['Fecha'],
+          EnlacePermanente: curiosidadAleatoria['Enlace permanente'],
+          Imagen: curiosidadAleatoria['Imagen'] || curiosidadAleatoria['Enlace permanente'] // Usa el enlace permanente si no hay imagen
+        }
+      }
+    ]
   };
   res.json(response);
 };
@@ -128,32 +159,49 @@ const getCuriosidadesFacebook = (req, res) => {
 const getCuriosidadesSabias = (req, res) => {
   const curiosidadSabiaAleatoria = obtenerElementoAleatorio(curiosidadesSabias);
   const response = {
-    mensaje: "Aquí tienes un dato curioso, ¿Sabías qué?",
-    curiosidad_sabia: {
-      Titulo: curiosidadSabiaAleatoria['Título'],
-      Descripcion: curiosidadSabiaAleatoria['Descripción'],
-      Fecha: curiosidadSabiaAleatoria['Fecha'],
-      EnlacePermanente: curiosidadSabiaAleatoria['Enlace permanente']
-    }
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes un dato curioso, ¿Sabías qué?",
+        data: {
+          Titulo: curiosidadSabiaAleatoria['Título'],
+          Descripcion: curiosidadSabiaAleatoria['Descripción'],
+          Fecha: curiosidadSabiaAleatoria['Fecha'],
+          EnlacePermanente: curiosidadSabiaAleatoria['Enlace permanente'],
+          Imagen: curiosidadSabiaAleatoria['Imagen'] || curiosidadSabiaAleatoria['Enlace permanente'] // Usa el enlace permanente si no hay imagen
+        }
+      }
+    ]
   };
   res.json(response);
 };
 
 const getRedesSociales = (req, res) => {
   const redesSociales = {
-    mensaje: "Aquí tienes nuestros enlaces en redes sociales:",
-    facebook: "https://www.facebook.com/GrupoGALASH",
-    instagram: "https://www.instagram.com/grupogalash/",
-    linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
-    // Agrega más redes sociales si es necesario
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes nuestros enlaces en redes sociales:",
+        data: {
+          facebook: "https://www.facebook.com/GrupoGALASH",
+          instagram: "https://www.instagram.com/grupogalash/",
+          linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
+        }
+      }
+    ]
   };
   res.json(redesSociales);
 };
 
 const getInstagramData = (req, res) => {
   res.json({
-    mensaje: "Aquí tienes los datos de Instagram:",
-    datos_instagram: datosInstagram
+    status: "success",
+    messages: [
+      {
+        text: "Aquí tienes los datos de Instagram:",
+        data: datosInstagram
+      }
+    ]
   });
 };
 

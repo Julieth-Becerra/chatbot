@@ -12,14 +12,14 @@ const {
   getInstagramData
 } = require('./controllers/dataController');
 
-router.get('/grupo', getGrupo);
-router.get('/proyectos', getProyectos);
-router.get('/semilleros', getSemilleros);
-router.get('/datos_facebook', getFacebookData);
-router.get('/noticias_facebook', getNoticiasFacebook);
-router.get('/curiosidades_facebook', getCuriosidadesFacebook);
-router.get('/curiosidades_sabias', getCuriosidadesSabias);
-router.get('/redes_sociales', getRedesSociales);
-router.get('/datos_instagram', getInstagramData);
+router.post('/grupo', getGrupo);
+router.post('/proyectos', getProyectos);
+router.post('/semilleros', getSemilleros);
+router.post('/datos_facebook', getFacebookData);
+router.post('/noticias_facebook', getNoticiasFacebook);
+router.post('/curiosidades_facebook', getCuriosidadesFacebook);
+router.post('/curiosidades_sabias', getCuriosidadesSabias);
+router.post('/redes_sociales', getRedesSociales);
+router.post('/datos_instagram', getInstagramData);
 
 module.exports = router;
