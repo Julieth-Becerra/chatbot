@@ -6,8 +6,7 @@ const {
   getSemilleros,
   getFacebookData,
   getNoticiasFacebook,
-  getCuriosidadesFacebook,
-  getCuriosidadesSabias,
+  getCuriosidadAleatoria,
   getRedesSociales,
   getInstagramData
 } = require('./controllers/dataController');
@@ -17,8 +16,7 @@ router.post('/proyectos', getProyectos);
 router.post('/semilleros', getSemilleros);
 router.post('/datos_facebook', getFacebookData);
 router.post('/noticias_facebook', getNoticiasFacebook);
-router.post('/curiosidades_facebook', getCuriosidadesFacebook);
-router.post('/curiosidades_sabias', getCuriosidadesSabias);
+router.post('/curiosidad_aleatoria', getCuriosidadAleatoria);
 router.post('/redes_sociales', getRedesSociales);
 router.post('/datos_instagram', getInstagramData);
 

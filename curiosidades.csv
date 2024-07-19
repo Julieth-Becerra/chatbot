@@ -1,0 +1,41 @@
+Categoría,Dato
+Inteligencia Artificial,El término 'Inteligencia Artificial' fue acuñado en 1956 por John McCarthy.
+Inteligencia Artificial,"En 1997, la computadora Deep Blue de IBM venció al campeón mundial de ajedrez Garry Kasparov."
+Inteligencia Artificial,"El test de Turing, desarrollado por Alan Turing, es una prueba para medir la capacidad de una máquina para exhibir un comportamiento inteligente equivalente al de un humano."
+Inteligencia Artificial,La primera red neuronal artificial fue propuesta en 1943 por Warren McCulloch y Walter Pitts.
+Inteligencia Artificial,Google utiliza algoritmos de IA para optimizar sus resultados de búsqueda y anuncios.
+Inteligencia Artificial,"En 2014, un chatbot llamado Eugene Goostman pasó el test de Turing por primera vez."
+Inteligencia Artificial,El aprendizaje profundo (deep learning) ha permitido avances significativos en el reconocimiento de voz y la visión por computadora.
+Inteligencia Artificial,"AlphaGo de DeepMind venció al campeón mundial de Go, Lee Sedol, en 2016."
+Inteligencia Artificial,El concepto de 'singularidad tecnológica' se refiere a un punto hipotético en el futuro cuando las IA superen la inteligencia humana.
+Inteligencia Artificial,"La mayoría de los asistentes virtuales como Siri, Alexa y Google Assistant utilizan IA para procesar y responder a las solicitudes de los usuarios."
+Ingeniería de Sistemas,"La primera computadora electrónica digital, ENIAC, fue desarrollada en la Universidad de Pensilvania en 1945."
+Ingeniería de Sistemas,El modelo de referencia OSI (Open Systems Interconnection) tiene siete capas.
+Ingeniería de Sistemas,El lenguaje de programación C fue desarrollado en 1972 por Dennis Ritchie en los Laboratorios Bell.
+Ingeniería de Sistemas,La Ley de Moore predice que el número de transistores en un chip se duplicará aproximadamente cada dos años.
+Ingeniería de Sistemas,"La primera red ARPANET, precursora de Internet, se estableció en 1969."
+Ingeniería de Sistemas,La World Wide Web fue inventada por Tim Berners-Lee en 1989.
+Ingeniería de Sistemas,"El primer microprocesador, el Intel 4004, fue lanzado en 1971."
+Ingeniería de Sistemas,"UNIX, un sistema operativo influyente, fue desarrollado en los Laboratorios Bell en 1969."
+Ingeniería de Sistemas,El concepto de virtualización de servidores permite que múltiples sistemas operativos se ejecuten en un solo servidor físico.
+Ingeniería de Sistemas,"La criptografía RSA, ampliamente utilizada para la seguridad en Internet, se basa en la dificultad de factorizar grandes números primos."
+Machine Learning,El término 'machine learning' fue acuñado por Arthur Samuel en 1959.
+Machine Learning,El aprendizaje supervisado requiere un conjunto de datos etiquetados para entrenar el modelo.
+Machine Learning,El aprendizaje no supervisado se utiliza para encontrar patrones en datos sin etiquetas.
+Machine Learning,El aprendizaje por refuerzo se basa en la idea de recompensar comportamientos deseados y penalizar los no deseados.
+Machine Learning,Las redes neuronales convolucionales (CNN) son especialmente buenas para tareas de visión por computadora.
+Machine Learning,Las redes neuronales recurrentes (RNN) son adecuadas para procesar datos secuenciales como el texto y el habla.
+Machine Learning,El algoritmo de k-means es un método popular de clustering no supervisado.
+Machine Learning,La regularización se utiliza para prevenir el sobreajuste en los modelos de machine learning.
+Machine Learning,El bagging y el boosting son técnicas de ensemble learning que combinan varios modelos para mejorar el rendimiento.
+Machine Learning,La validación cruzada se utiliza para evaluar el rendimiento de un modelo de machine learning.
+Desarrollo de Software,El término 'debugging' fue popularizado por Grace Hopper cuando encontró una polilla real causando problemas en una computadora.
+Desarrollo de Software,"El Manifiesto Ágil, publicado en 2001, promueve el desarrollo ágil de software con énfasis en la colaboración y la adaptación al cambio."
+Desarrollo de Software,"Git, un sistema de control de versiones distribuido, fue creado por Linus Torvalds en 2005."
+Desarrollo de Software,Scrum es un marco de trabajo ágil que utiliza sprints para gestionar el desarrollo de proyectos.
+Desarrollo de Software,"El ciclo de vida del desarrollo de software incluye fases como el análisis, diseño, implementación, pruebas y mantenimiento."
+Desarrollo de Software,El desarrollo dirigido por pruebas (TDD) implica escribir pruebas unitarias antes de escribir el código de producción.
+Desarrollo de Software,El principio DRY (Don't Repeat Yourself) fomenta la reducción de duplicación de código.
+Desarrollo de Software,"El principio KISS (Keep It Simple, Stupid) sugiere que los sistemas deben ser tan simples como sea posible."
+Desarrollo de Software,Las pruebas automatizadas ayudan a garantizar que los cambios en el código no introduzcan errores.
+Desarrollo de Software,El código abierto permite a los desarrolladores colaborar y contribuir a proyectos de software libremente.
