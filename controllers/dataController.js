@@ -107,7 +107,9 @@ const getFacebookData = (req, res) => {
 
 const getNoticiasFacebook = (req, res) => {
   res.json({
-    message: `Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles:\n\n${noticiasFacebook.map(noticia => formatearDatos(noticia)).join('\n\n')}`,
+    message: `Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles:\n\n${noticiasFacebook.map(noticia => {
+      return `Título: ${noticia['Título']}\nDescripción: ${noticia['Descripción']}\nEnlace: [Ver publicación](${noticia['Enlace permanente']})`;
+    }).join('\n\n')}`,
     suggested_replies: ["Más noticias", "Ver curiosidades"]
   });
 };
@@ -115,13 +117,22 @@ const getNoticiasFacebook = (req, res) => {
 const getCuriosidadesFacebook = (req, res) => {
   const curiosidadAleatoria = obtenerElementoAleatorio(curiosidadesFacebook);
   res.json({
-    message: `Aquí tienes una curiosidad interesante:\n\n${formatearDatos({
-      Titulo: curiosidadAleatoria['Título'],
-      Descripcion: curiosidadAleatoria['Descripción'],
-      Fecha: curiosidadAleatoria['Fecha'],
-      EnlacePermanente: curiosidadAleatoria['Enlace permanente'],
-      Imagen: curiosidadAleatoria['Imagen'] || curiosidadAleatoria['Enlace permanente']
-    })}`,
+    messages: [
+      {
+        text: `Aquí tienes una curiosidad interesante:\n\n${curiosidadAleatoria['Descripción']}`
+      },
+      {
+        attachment: {
+          type: "image",
+          payload: {
+            url: curiosidadAleatoria['Imagen'] || curiosidadAleatoria['Enlace permanente']
+          }
+        }
+      },
+      {
+        text: `Enlace: [Ver publicación](${curiosidadAleatoria['Enlace permanente']})`
+      }
+    ],
     suggested_replies: ["Otra curiosidad", "Ver curiosidades sabias"]
   });
 };
@@ -129,13 +140,22 @@ const getCuriosidadesFacebook = (req, res) => {
 const getCuriosidadesSabias = (req, res) => {
   const curiosidadSabiaAleatoria = obtenerElementoAleatorio(curiosidadesSabias);
   res.json({
-    message: `Aquí tienes un dato curioso, ¿Sabías qué?\n\n${formatearDatos({
-      Titulo: curiosidadSabiaAleatoria['Título'],
-      Descripcion: curiosidadSabiaAleatoria['Descripción'],
-      Fecha: curiosidadSabiaAleatoria['Fecha'],
-      EnlacePermanente: curiosidadSabiaAleatoria['Enlace permanente'],
-      Imagen: curiosidadSabiaAleatoria['Imagen'] || curiosidadSabiaAleatoria['Enlace permanente']
-    })}`,
+    messages: [
+      {
+        text: `Aquí tienes un dato curioso, ¿Sabías qué?\n\n${curiosidadSabiaAleatoria['Descripción']}`
+      },
+      {
+        attachment: {
+          type: "image",
+          payload: {
+            url: curiosidadSabiaAleatoria['Imagen'] || curiosidadSabiaAleatoria['Enlace permanente']
+          }
+        }
+      },
+      {
+        text: `Enlace: [Ver publicación](${curiosidadSabiaAleatoria['Enlace permanente']})`
+      }
+    ],
     suggested_replies: ["Otra curiosidad sabia", "Ver redes sociales"]
   });
 };
@@ -143,9 +163,9 @@ const getCuriosidadesSabias = (req, res) => {
 const getRedesSociales = (req, res) => {
   res.json({
     message: `Aquí tienes nuestros enlaces en redes sociales:\n\n${formatearDatos({
-      facebook: "https://www.facebook.com/GrupoGALASH",
-      instagram: "https://www.instagram.com/grupogalash/",
-      linkedin: "https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/"
+      facebook: "[Facebook](https://www.facebook.com/GrupoGALASH)",
+      instagram: "[Instagram](https://www.instagram.com/grupogalash/)",
+      linkedin: "[LinkedIn](https://www.linkedin.com/in/galash-grupo-de-investigaci%C3%B3n/)"
     })}`,
     suggested_replies: ["Ver datos de Instagram", "Ver proyectos"]
   });
