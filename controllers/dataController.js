@@ -21,7 +21,7 @@ let articulosPublicados = [];
 // Funciones para leer y parsear archivos CSV
 const leerCSV = (ruta, separator, callback) => {
   let datos = [];
-  fs.createReadStream(ruta, { encoding: 'utf-8' }) // Asegurarse de usar la codificación correcta
+  fs.createReadStream(ruta, { encoding: 'utf-8' })
     .pipe(csv({ separator: separator }))
     .on('data', (row) => {
       datos.push(row);
@@ -37,11 +37,28 @@ leerCSV(path.join(__dirname, '../grupo.csv'), ';', (datos) => {
 });
 
 leerCSV(path.join(__dirname, '../Proyectos.csv'), ';', (datos) => {
-  proyectosInfo = datos;
+  proyectosInfo = datos.map(proyecto => {
+    return {
+      nombre_proyecto: proyecto['nombre_proyecto'],
+      descripcion_proyecto: proyecto['descripcion_proyecto'],
+      semillero: proyecto['semillero'],
+      integrantes: proyecto['integrantes'],
+      director_proyecto: proyecto['director_proyecto'],
+      co_director: proyecto['co_director'],
+      estado: proyecto['estado']
+    };
+  });
 });
 
 leerCSV(path.join(__dirname, '../Semilleros.csv'), ';', (datos) => {
-  semillerosInfo = datos;
+  semillerosInfo = datos.map(semillero => {
+    return {
+      nombre_semillero: semillero['nombre_semillero'],
+      docente_encargado: semillero['docente_encargado'],
+      objetivo_semillero: semillero['objetivo_semillero'],
+      linea_investigacion: semillero['linea_investigacion']
+    };
+  });
 });
 
 leerCSV(path.join(__dirname, '../datos_facebook.csv'), ',', (datos) => {
@@ -67,7 +84,7 @@ leerCSV(path.join(__dirname, '../lineas_investigacion.csv'), ',', (datos) => {
   vision = datos[0]["Vision"];
 });
 
-leerCSV(path.join(__dirname, '../articulos_publicados.csv'), ';', (datos) => {
+leerCSV(path.join(__dirname, '../articulos_publicados.csv'), ',', (datos) => {
   articulosPublicados = datos;
 });
 
