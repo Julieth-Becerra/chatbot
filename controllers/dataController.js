@@ -18,10 +18,10 @@ let retos = '';
 let vision = '';
 let articulosPublicados = [];
 
-// Funciones para leer y parsear archivos CSV y XLSX
+// Funciones para leer y parsear archivos CSV
 const leerCSV = (ruta, separator, callback) => {
   let datos = [];
-  fs.createReadStream(ruta)
+  fs.createReadStream(ruta, { encoding: 'utf-8' }) // Asegurarse de usar la codificación correcta
     .pipe(csv({ separator: separator }))
     .on('data', (row) => {
       datos.push(row);
