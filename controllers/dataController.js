@@ -176,7 +176,7 @@ const getNoticiasFacebook = (req, res) => {
 
   res.json({
     message: `Estas son las noticias que tenemos para ti, por favor visita el enlace para más detalles:\n\n${noticiasSimplificadas.map(noticia => `Descripción: ${noticia.Descripcion}\nEnlace permanente: ${noticia.EnlacePermanente}`).join('\n\n')}`,
-    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados", "Ver datos curiosos", "Contacto"]
+    suggested_replies: ["Ver grupo", "Ver proyectos", "Ver semilleros", "Ver líneas de investigación", "Ver plan estratégico", "Ver objetivos", "Ver retos", "Ver visión", "Ver artículos publicados",  "Contacto"]
   });
 };
 
